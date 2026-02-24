@@ -25,21 +25,29 @@ public class Carta {
         lblCarta.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JOptionPane.showMessageDialog(null, getPinta().toString());
+                JOptionPane.showMessageDialog(null, getNombre().toString() + " de " +getPinta().toString());
             }
         });
     }
 
-    public Pinta getPinta(){
-        if(indice<=13){
+    public Pinta getPinta() {
+        if (indice <= 13) {
             return Pinta.TREBOL;
-        } else if(indice<=26){
+        } else if (indice <= 26) {
             return Pinta.PICA;
-        }else if(indice<=39){
+        } else if (indice <= 39) {
             return Pinta.CORAZON;
-        }else{
+        } else {
             return Pinta.DIAMANTE;
         }
+    }
+
+    public NombreCarta getNombre() {
+        int residuo = indice % 13;
+        if (residuo == 0) {
+            residuo = 13;
+        }
+        return NombreCarta.values()[residuo - 1];
     }
 
 }
